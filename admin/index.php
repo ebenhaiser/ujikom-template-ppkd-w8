@@ -4,9 +4,7 @@ session_regenerate_id();
 ob_start();
 ob_clean();
 require_once 'controller/connection.php';
-if (empty($_SESSION)) {
-  header("Location: controller/logout.php");
-}
+require_once 'controller/functions.php';
 ?>
 <!DOCTYPE html>
 
@@ -27,7 +25,7 @@ if (empty($_SESSION)) {
   class="light-style layout-menu-fixed"
   dir="ltr"
   data-theme="theme-default"
-  data-assets-path="../assets/"
+  data-assets-path="assets/admin/assets/"
   data-template="vertical-menu-template-free">
 
 <head>
@@ -39,8 +37,6 @@ if (empty($_SESSION)) {
   <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
   <meta name="description" content="" />
-  <link href="img/logo/logo.png" rel="icon">
-  <link href="img/logo/logo.png" rel="apple-touch-icon">
 
   <?php include 'inc/head.php' ?>
 </head>
@@ -50,42 +46,33 @@ if (empty($_SESSION)) {
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
       <!-- Menu -->
-
-      <?php include 'inc/sidebar.php'; ?>
+      <?php include 'inc/sidebar.php' ?>
       <!-- / Menu -->
 
       <!-- Layout container -->
       <div class="layout-page">
         <!-- Navbar -->
-        <div class="wrapper">
-          <div class="container">
-            <?php include 'inc/nav.php'; ?>
-            <!-- / Navbar -->
+        <?php include 'inc/nav.php' ?>
+        <!-- / Navbar -->
 
-            <!-- Content wrapper -->
-            <div class="content-wrapper">
-              <!-- Content -->
-
-              <div class="content">
-                <?php
-                if (isset($_GET['pg'])) {
-                  if (file_exists('content/' . $_GET['pg'] . '.php')) {
-                    include 'content/' . $_GET['pg'] . '.php';
-                  } else {
-                    header("Location: index.php");
-                  }
-                } else {
-                  include 'content/dashboard.php';
-                }
-                ?>
-              </div>
-            </div>
-          </div>
-
-
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          <!-- Content -->
+          <?php
+          if (isset($_GET['page'])) {
+            if (file_exists('content/' . $_GET['page'] . '.php')) {
+              include 'content/' . $_GET['page'] . '.php';
+            } else {
+              header("Location: index.php");
+            }
+          } else {
+            include 'content/default-content.php';
+          }
+          ?>
+          <!-- / Content -->
 
           <!-- Footer -->
-          <!-- <?php include 'inc/footer.php' ?> -->
+          <?php include 'inc/footer.php' ?>
           <!-- / Footer -->
 
           <div class="content-backdrop fade"></div>
@@ -100,28 +87,7 @@ if (empty($_SESSION)) {
   </div>
   <!-- / Layout wrapper -->
 
-
-  <!-- Core JS -->
-  <!-- build:js assets/vendor/js/core.js -->
-  <script src="../assets/admin/assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="../assets/admin/assets/vendor/libs/popper/popper.js"></script>
-  <script src="../assets/admin/assets/vendor/js/bootstrap.js"></script>
-  <script src="../assets/admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-  <script src="../assets/admin/assets/vendor/js/menu.js"></script>
-  <!-- endbuild -->
-
-  <!-- Vendors JS -->
-  <script src="../assets/admin/assets/vendor/libs/apex-charts/apexcharts.js"></script>
-
-  <!-- Main JS -->
-  <script src="../assets/admin/assets/js/main.js"></script>
-
-  <!-- Page JS -->
-  <script src="../assets/admin/assets/js/dashboards-analytics.js"></script>
-
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <?php include 'inc/js.php' ?>
 </body>
 
 </html>

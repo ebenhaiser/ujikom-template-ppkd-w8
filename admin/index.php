@@ -4,7 +4,9 @@ session_regenerate_id();
 ob_start();
 ob_clean();
 require_once 'controller/connection.php';
-require_once 'controller/functions.php';
+if (!isset($_SESSION)) {
+  header('Location: login.php');
+}
 ?>
 <!DOCTYPE html>
 
@@ -57,18 +59,21 @@ require_once 'controller/functions.php';
 
         <!-- Content wrapper -->
         <div class="content-wrapper">
-          <!-- Content -->
-          <?php
-          if (isset($_GET['page'])) {
-            if (file_exists('content/' . $_GET['page'] . '.php')) {
-              include 'content/' . $_GET['page'] . '.php';
+          <div class="container-xxl flex-grow-1 container-p-y">
+
+            <!-- Content -->
+            <?php
+            if (isset($_GET['page'])) {
+              if (file_exists('content/' . $_GET['page'] . '.php')) {
+                include 'content/' . $_GET['page'] . '.php';
+              } else {
+                header("Location: index.php");
+              }
             } else {
-              header("Location: index.php");
+              include 'content/default-content.php';
             }
-          } else {
-            include 'content/default-content.php';
-          }
-          ?>
+            ?>
+          </div>
           <!-- / Content -->
 
           <!-- Footer -->

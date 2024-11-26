@@ -1,14 +1,24 @@
 <?php
 require_once 'controller/connection.php';
 require_once 'controller/functions.php';
-if (isset($_POST['sign_in'])) {
-  $email = $_POST['email'];
+if (isset($_POST['login'])) {
+  $email    = $_POST['email']; //untuk mengambil nilai dari input
   $password = $_POST['password'];
-  $login = loginController($email, $password);
-  if ($login) {
-    header('Location: index.php');
+
+  $queryLogin = mysqli_query($connection, "SELECT * FROM user WHERE email='$email' AND deleted_at=0
+  ");
+  // mysqli_num_row() : untuk melihat total data di dalam table
+  if (mysqli_num_rows($queryLogin) > 0) {
+    $rowLogin = mysqli_fetch_assoc($queryLogin);
+    if ($password == $rowLogin['password']) {
+      $_SESSION['name'] = $rowLogin['name'];
+      $_SESSION['id'] = $rowLogin['id'];
+      header("location:index.php");
+    } else {
+      header("location:login.php?login=failed");
+    }
   } else {
-    header('location: ?login=failed');
+    header("location:login.php?login=failed");
   }
 }
 ?>
@@ -187,7 +197,7 @@ if (isset($_POST['sign_in'])) {
                 </div> -->
           </div>
           <div class="mb-3">
-            <button class="btn btn-primary d-grid mx-auto" type="submit" name="sign_in" class="">Sign in</button>
+            <button class="btn btn-primary d-grid mx-auto" type="submit" name="login" class="">Sign in</button>
           </div>
           </form>
 

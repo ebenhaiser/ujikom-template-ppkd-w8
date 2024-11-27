@@ -24,6 +24,7 @@ $rowNav  = mysqli_fetch_array($queryNav);
         </div> -->
         <!-- /Search -->
 
+
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- Place this tag where you want the button to render. -->
             <!-- <li class="nav-item lh-1 me-3">
@@ -42,7 +43,7 @@ $rowNav  = mysqli_fetch_array($queryNav);
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">

@@ -1,24 +1,26 @@
 <?php
+session_start();
 require_once 'controller/connection.php';
 require_once 'controller/functions.php';
 if (isset($_POST['login'])) {
-  $email    = $_POST['email']; //untuk mengambil nilai dari input
+  $email    = $_POST['email'];
   $password = $_POST['password'];
 
-  $queryLogin = mysqli_query($connection, "SELECT * FROM user WHERE email='$email' AND deleted_at=0
-  ");
+  $queryLogin = mysqli_query($connection, "SELECT * FROM user WHERE email='$email'");
   // mysqli_num_row() : untuk melihat total data di dalam table
   if (mysqli_num_rows($queryLogin) > 0) {
     $rowLogin = mysqli_fetch_assoc($queryLogin);
     if ($password == $rowLogin['password']) {
-      $_SESSION['name'] = $rowLogin['name'];
       $_SESSION['id'] = $rowLogin['id'];
       header("location:index.php");
+      die;
     } else {
       header("location:login.php?login=failed");
+      die;
     }
   } else {
     header("location:login.php?login=failed");
+    die;
   }
 }
 ?>

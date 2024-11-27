@@ -4,9 +4,10 @@ session_regenerate_id();
 ob_start();
 ob_clean();
 require_once 'controller/connection.php';
-if (!isset($_SESSION)) {
-  header('Location: login.php');
+if (empty($_SESSION['id'])) {
+  header('Location: controller/logout.php');
 }
+
 ?>
 <!DOCTYPE html>
 
@@ -70,7 +71,7 @@ if (!isset($_SESSION)) {
                 header("Location: index.php");
               }
             } else {
-              include 'content/default-content.php';
+              include 'content/dashboard.php';
             }
             ?>
           </div>

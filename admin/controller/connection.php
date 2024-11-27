@@ -1,6 +1,6 @@
 <?php
 
-$connection = mysqli_connect("localhost", "root", "", "angkatan3_laundry");
+$connection = mysqli_connect("localhost", "root", "", "ujikom_template");
 
 if (!$connection) {
     echo "Unable to connect";

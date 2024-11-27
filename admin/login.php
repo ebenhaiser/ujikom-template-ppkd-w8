@@ -158,8 +158,9 @@ if (isset($_POST['login'])) {
             <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
             <?php if (isset($_GET['login']) && $_GET['login'] == 'failed') : ?>
-              <div class="alert alert-danger" role="alert">
+              <div class="alert alert-danger alert-dismissible" role="alert">
                 Invalid email or password!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
             <?php endif ?>
 
@@ -172,6 +173,7 @@ if (isset($_POST['login'])) {
                   id="email"
                   name="email"
                   placeholder="Enter your email"
+                  value=""
                   autofocus />
               </div>
               <div class="mb-3 form-password-toggle">
@@ -187,7 +189,7 @@ if (isset($_POST['login'])) {
                     id="password"
                     class="form-control"
                     name="password"
-                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                    placeholder="Enter your password"
                     aria-describedby="password" />
                   <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>

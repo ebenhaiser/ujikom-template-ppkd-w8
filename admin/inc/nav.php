@@ -53,8 +53,9 @@ $rowNav  = mysqli_fetch_array($queryNav);
                                 </div>
                                 <div class="flex-grow-1">
                                     <span
-                                        class="fw-semibold d-block"><?= isset($rowNav['name']) ? $rowNav['name'] : ' -- your name --' ?></span>
-                                    <small class="text-muted">Admin</small>
+                                        class="fw-semibold d-block"><?= isset($rowNav['name']) ? $rowNav['name'] : '-- your name --' ?></span>
+                                    <small
+                                        class="text-muted"><?= isset($rowNav['level_name']) ? $rowNav['level_name'] : 'unleveled' ?></small>
                                 </div>
                             </div>
                         </a>

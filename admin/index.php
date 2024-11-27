@@ -68,7 +68,8 @@ if (empty($_SESSION['id'])) {
               if (file_exists('content/' . $_GET['page'] . '.php')) {
                 include 'content/' . $_GET['page'] . '.php';
               } else {
-                header("Location: index.php");
+                header("Location: content/misc/error.php");
+                die;
               }
             } else {
               include 'content/dashboard.php';

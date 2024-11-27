@@ -17,7 +17,8 @@ if (isset($_POST['edit'])) {
         $img_ext = pathinfo($namaFotoLama, PATHINFO_EXTENSION);
 
         if (!in_array($img_ext, $ext)) {
-            header("Location: ?page=my-profile&error=ext");
+            header("Location: ?page=my-profile&edit=errorExtension");
+            die;
         } else {
             unlink('img/profile_picture/' . $rowEdit['photo']);
             $new_image_name = "profile_picture" . $idEdit . "." . $img_ext;
@@ -27,14 +28,15 @@ if (isset($_POST['edit'])) {
     }
     $queryEdit = mysqli_query($connection, "UPDATE user SET name='$name', email='$email' WHERE id='$idEdit'");
     header("Location: ?page=my-profile&edit=success");
+    die;
 }
 
 $queryLevel = mysqli_query($connection, "SELECT * FROM level");
 
-if ((isset($_GET['pg']) == 'my-profile') && (isset($_GET['edit']) == 'success')) {
-    header('location: ?page=my-profile');
-    die;
-}
+// if ((isset($_GET['pg']) == 'my-profile') && (isset($_GET['edit']) == 'success')) {
+//     header('location: ?page=my-profile');
+//     die;
+// }
 
 ?>
 
@@ -43,6 +45,17 @@ if ((isset($_GET['pg']) == 'my-profile') && (isset($_GET['edit']) == 'success'))
         <h3>My Profile</h3>
     </div>
     <div class="card-body">
+        <?php if (isset($_GET['edit']) && $_GET['edit'] == 'success'): ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                Edit profile success!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php elseif (isset($_GET['edit']) && $_GET['edit'] == 'errorExtension'): ?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                Wrong file extension!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif ?>
         <img width="150px"
             src="<?= !empty($rowEdit['profile_picture']) && file_exists('img/profile_picture/' . $rowEdit['profile_picture']) ? 'img/profile_picture/' . $rowEdit['profile_picture'] : 'https://placehold.co/100' ?>"
             alt="" class="mt-4 rounded">

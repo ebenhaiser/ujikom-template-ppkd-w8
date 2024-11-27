@@ -9,7 +9,7 @@
 
 <body>
     <script>
-        window.location.href = 'admin/';
+        window.location.href = 'admin/controller/logout.php';
     </script>
 </body>
 

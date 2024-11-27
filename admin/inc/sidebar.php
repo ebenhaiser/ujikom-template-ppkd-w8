@@ -69,9 +69,9 @@
             <span class="menu-header-text">Master Data</span>
         </li>
         <li
-            class="menu-item <?= (isset($_GET['page']) && ($_GET['page'] == 'users' || $_GET['page'] == 'add-users')) ? 'active' : '' ?>">
-            <a href="?page=users" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            class="menu-item <?= (isset($_GET['page']) && ($_GET['page'] == 'user' || $_GET['page'] == 'add-user')) ? 'active' : '' ?>">
+            <a href="?page=user" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Analytics">Users</div>
             </a>
         </li>

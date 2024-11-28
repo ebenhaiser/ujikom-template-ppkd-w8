@@ -26,7 +26,7 @@ $rowDashboard = mysqli_fetch_array($queryDashboard);
                 <img src="https://placehold.co/400" alt="">
             </div>
             <div class="col-sm-12" align="center">
-                <h2>Welcome, <?= $rowDashboard['name'] ?>!</h2>
+                <h2>Welcome, <?= $rowDashboard['username'] ?>!</h2>
             </div>
         </div>
     </div>

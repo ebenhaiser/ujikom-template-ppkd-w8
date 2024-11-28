@@ -11,22 +11,22 @@ if (isset($_GET['delete'])) {
     $queryEdit = mysqli_query($connection, "SELECT * FROM user WHERE id='$idEdit'");
     $rowEdit = mysqli_fetch_assoc($queryEdit);
     if (isset($_POST['edit'])) {
-        $name = $_POST['name'];
+        $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'] ? $_POST['password'] : $rowEdit['password'];
         $id_level = $_POST['id_level'];
 
-        $queryEdit = mysqli_query($connection, "UPDATE user SET name='$name', email='$email', password='$password', id_level='$id_level' WHERE id='$idEdit'");
+        $queryEdit = mysqli_query($connection, "UPDATE user SET username='$username', email='$email', password='$password', id_level='$id_level' WHERE id='$idEdit'");
         header("Location: ?page=user&edit=success");
         die;
     }
 } else if (isset($_POST['add'])) {
-    $name = $_POST['name'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $id_level = $_POST['id_level'];
 
-    $queryAdd = mysqli_query($connection, "INSERT INTO user (name, email, password, id_level) VALUES ('$name', '$email', '$password', '$id_level')");
+    $queryAdd = mysqli_query($connection, "INSERT INTO user (username, email, password, id_level) VALUES ('$username', '$email', '$password', '$id_level')");
     header("Location: ?page=user&add=success");
     die;
 }
@@ -42,9 +42,9 @@ $queryLevel = mysqli_query($connection, "SELECT * FROM level");
         <form action="" method="post">
             <div class="row">
                 <div class="col-sm-6 mb-3">
-                    <label for="name" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama"
-                        value="<?= isset($_GET['edit']) ? $rowEdit['name'] : '' ?>" required>
+                    <label for="username" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan nama"
+                        value="<?= isset($_GET['edit']) ? $rowEdit['username'] : '' ?>" required>
                 </div>
                 <div class="col-sm-6 mb-3">
                     <label for="email" class="form-label">Email</label>

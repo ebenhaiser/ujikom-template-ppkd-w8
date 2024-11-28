@@ -8,17 +8,17 @@ $queryDataUser = mysqli_query($connection, "SELECT user.id, user.deleted_at, use
     <div class="card-body">
         <?php if (isset($_GET['edit']) && $_GET['edit'] == 'success'): ?>
             <div class="alert alert-success alert-dismissible" role="alert">
-                your data has been edited successfully!
+                your data has been EDITED successfully!
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php elseif (isset($_GET['delete']) && $_GET['delete'] == 'success'): ?>
             <div class="alert alert-success alert-dismissible" role="alert">
-                your data has been deleted successfully!
+                your data has been DELETED successfully!
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php elseif (isset($_GET['add']) && $_GET['add'] == 'success'): ?>
             <div class="alert alert-success alert-dismissible" role="alert">
-                your data has been added successfully!
+                your data has been ADDED successfully!
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php endif ?>
@@ -46,7 +46,7 @@ $queryDataUser = mysqli_query($connection, "SELECT user.id, user.deleted_at, use
                         <td><?= isset($rowDataUser['email']) ? $rowDataUser['email'] : '-' ?></td>
                         <td>
                             <a href="?page=add-user&edit=<?php echo $rowDataUser['id'] ?>">
-                                <button class="btn btn-info">
+                                <button class="btn btn-secondary">
                                     <i class="tf-icon bx bx-edit bx-22px"></i>
                                 </button>
                             </a>

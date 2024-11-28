@@ -1,3 +1,37 @@
+<?php
+session_start();
+require_once 'controller/connection.php';
+require_once 'controller/functions.php';
+
+if (isset($_POST['register'])) {
+  $username = $_POST['username'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  $queryValidationEmail = mysqli_query($connection, "SELECT * FROM user WHERE email = '$email'");
+  $queryValidationUsername = mysqli_query($connection, "SELECT * FROM user WHERE username = '$username'");
+  if (mysqli_num_rows($queryValidationEmail) > 0) {
+    header("location: ?error=emailAlreadyRegistered");
+    die;
+  } elseif (mysqli_num_rows($queryValidationUsername) > 0) {
+    header("location: ?error=usernameAlreadyRegistered");
+    die;
+  } elseif (!isset($_POST['terms'])) {
+    header("location: ?error=notAgreeTerms");
+    die;
+  } else {
+    $queryRegister = mysqli_query($connection, "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')");
+    if ($queryRegister) {
+      header("location: login.php?register=success");
+      die;
+    } else {
+      header("location: ?error=registerFailed");
+      die;
+    }
+  }
+}
+
+?>
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -75,7 +109,7 @@
             <div class="app-brand justify-content-center">
               <a href="index.html" class="app-brand-link gap-2">
                 <span class="app-brand-logo demo">
-                  <svg
+                  <!-- <svg
                     width="25"
                     viewBox="0 0 25 42"
                     version="1.1"
@@ -121,16 +155,22 @@
                         </g>
                       </g>
                     </g>
-                  </svg>
+                  </svg> -->
+                  <img src="https://placehold.co/50" alt="">
                 </span>
-                <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                <span class="app-brand-text demo text-body fw-bolder">Admin</span>
               </a>
             </div>
             <!-- /Logo -->
-            <h4 class="mb-2">Adventure starts here 🚀</h4>
-            <p class="mb-4">Make your app management easy and fun!</p>
+            <h4 class="mb-2">So, you are new here, huh?</h4>
+            <p class="mb-4">Make your account to get access!</p>
 
-            <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+            <?php if (isset($_GET['error']) && $_GET['error'] == 'emailAlreadyRegistered'): ?>
+            <?php elseif (isset($_GET['error']) && $_GET['error'] == 'usernameAlreadyRegistered'): ?>
+            <?php elseif (isset($_GET['error']) && $_GET['error'] == 'notAgreeTerms'): ?>
+            <?php endif ?>
+
+            <form id="formAuthentication" class="mb-3" action="" method="POST">
               <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input
@@ -139,11 +179,13 @@
                   id="username"
                   name="username"
                   placeholder="Enter your username"
+                  value="<?= isset($_POST['username']) ? $_POST['username'] : '' ?>"
+                  required
                   autofocus />
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" required value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" />
               </div>
               <div class="mb-3 form-password-toggle">
                 <label class="form-label" for="password">Password</label>
@@ -153,7 +195,8 @@
                     id="password"
                     class="form-control"
                     name="password"
-                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                    placeholder="Input your password"
+                    required
                     aria-describedby="password" />
                   <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
@@ -168,7 +211,7 @@
                   </label>
                 </div>
               </div>
-              <button class="btn btn-primary d-grid w-100">Sign up</button>
+              <button class="btn btn-primary d-grid w-100" name="register">Sign up</button>
             </form>
 
             <p class="text-center">

@@ -102,7 +102,7 @@ if (isset($_POST['login'])) {
             <div class="app-brand justify-content-center">
               <a href="index.html" class="app-brand-link gap-2">
                 <span class="app-brand-logo demo">
-                  <svg
+                  <!-- <svg
                     width="25"
                     viewBox="0 0 25 42"
                     version="1.1"
@@ -148,14 +148,15 @@ if (isset($_POST['login'])) {
                         </g>
                       </g>
                     </g>
-                  </svg>
+                  </svg> -->
+                  <img src="https://placehold.co/50" alt="">
                 </span>
-                <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                <span class="app-brand-text demo text-body fw-bolder">Admin</span>
               </a>
             </div>
             <!-- /Logo -->
-            <h4 class="mb-2">Welcome to Sneat! 👋</h4>
-            <p class="mb-4">Please sign-in to your account and start the adventure</p>
+            <h4 class="mb-2">Welcome admin!</h4>
+            <p class="mb-4">Please sign-in to your account</p>
 
             <?php if (isset($_GET['login']) && $_GET['login'] == 'failed') : ?>
               <div class="alert alert-danger alert-dismissible" role="alert">

@@ -2,7 +2,7 @@
     <div class="app-brand demo">
         <a class="app-brand-link">
             <span class="app-brand-logo demo">
-                <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                <!-- <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
                     <defs>
                         <path
@@ -43,7 +43,8 @@
                             </g>
                         </g>
                     </g>
-                </svg>
+                </svg> -->
+                <img src="https://placehold.co/50" alt="">
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin</span>
         </a>

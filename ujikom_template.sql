@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2024 at 03:42 AM
+-- Generation Time: Nov 28, 2024 at 02:07 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -180,8 +180,8 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `profile_picture` varchar(50) NOT NULL,
-  `created at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -189,16 +189,12 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `id_level`, `username`, `email`, `password`, `profile_picture`, `created at`, `updated at`, `deleted_at`) VALUES
-(1, 3, 'Admin', 'admin@gmail.com', '12345678', 'profile_picture1.jpg', '2024-11-11 02:30:45', '2024-11-28 01:53:03', 0),
-(4, 1, 'Admin Aplikasi', 'admin.aplikasi@gmail.com', '12345678', '', '2024-11-11 07:40:43', '2024-11-15 04:20:44', 1),
-(5, 2, 'PIC Jurusan Web Programming', 'pic.jurusan.16@gmail.com', '12345678', '', '2024-11-12 01:28:54', '2024-11-15 04:20:42', 1),
-(6, 2, 'PIC Jurusan Content Creator', 'pic.jurusan.15@gmail.com', '12345678', 'foto_profil_user6.jpg', '2024-11-12 02:20:00', '2024-11-20 13:42:07', 0),
-(7, 2, 'PIC Jurusan Operator Komputer', 'pic.jurusan.01@gmail.com', '12345678', '', '2024-11-12 03:06:41', '2024-11-15 04:20:39', 1),
-(8, 2, 'TEst', 'eren@gmail.com', '12345678', '', '2024-11-12 04:28:52', '2024-11-12 04:29:10', 1),
-(9, 2, 'PIC Jurusan Tata Boga', 'pic.jurusan.4@gmail.com', '12345678', '', '2024-11-12 05:02:14', '2024-11-15 04:20:37', 1),
-(11, 2, 'Reza123', 'reza@gmail.com', '12345678', '', '2024-11-12 07:44:38', '2024-11-14 04:39:13', 1),
-(12, 0, 'sdefrgt', 'pic.jurusan.1sdfsdsd5@gmail.com', '`12345678', '', '2024-11-15 02:02:40', '2024-11-15 02:19:09', 1);
+INSERT INTO `user` (`id`, `id_level`, `username`, `email`, `password`, `profile_picture`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 3, 'Admin', 'admin@gmail.com', '12345678', 'profile_picture1.jpg', '2024-11-11 02:30:45', '2024-11-28 13:02:50', 0),
+(13, 3, 'Bang Ganteng', 'bang.ganteng@gmail.com', '12345678', 'profile_picture13.jpeg', '2024-11-28 12:04:23', '2024-11-28 12:58:11', 0),
+(14, 3, 'Mia K.', 'mia.k@gmail.com', '12345678', 'profile_picture14.jpeg', '2024-11-28 12:16:42', '2024-11-28 12:58:06', 0),
+(15, 3, 'Mr. Bean', 'mr.bean@gmail.com', '12345678', 'profile_picture15.jpg', '2024-11-28 12:24:47', '2024-11-28 12:57:59', 0),
+(16, 0, 'Sumanto', 'sumanto@gmail.com', '12345678', 'profile_picture16.jpg', '2024-11-28 13:05:03', '2024-11-28 13:05:26', 0);
 
 --
 -- Indexes for dumped tables
@@ -290,7 +286,7 @@ ALTER TABLE `type_of_service`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

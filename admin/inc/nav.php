@@ -70,7 +70,7 @@ $rowNav  = mysqli_fetch_array($queryNav);
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="?page=change-password">
                             <i class="bx bx-cog me-2"></i>
                             <span class="align-middle">Change Password</span>
                         </a>

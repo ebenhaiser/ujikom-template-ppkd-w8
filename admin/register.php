@@ -219,7 +219,9 @@ if (isset($_POST['register'])) {
                   <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
                   <label class="form-check-label" for="terms-conditions">
                     I agree to
-                    <a href="javascript:void(0);">privacy policy & terms</a>
+                    <a href="" type="button"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalScrollable">privacy policy & terms</a>
                   </label>
                 </div>
               </div>
@@ -260,6 +262,50 @@ if (isset($_POST['register'])) {
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalScrollableTitle">Privacy Policy & Terms of Use</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>1. Data Collection & Use</strong></p>
+          <p>We collect personal data (e.g., name, email, phone) and transaction records to manage sales and purchases. Technical data is also gathered to enhance security and performance.</p>
+          <p><strong>2. Data Sharing</strong></p>
+          <p>Your data is not shared with third parties unless required by law or with trusted service providers under strict confidentiality.</p>
+          <p><strong>3. User Responsibilities</strong></p>
+          <p>You are responsible for:
+          <ul>
+            <li>Entering accurate data.</li>
+            <li>Keeping login credentials secure.</li>
+            <li>Keeping login credentials secure.</li>
+          </ul>
+          </p>
+          <p><strong>4. Prohibited Actions</strong></p>
+          <p>You may not use the Application for illegal purposes, share credentials, or bypass security measures.</p>
+          <p><strong>5. Termination</strong></p>
+          <p>We may suspend or terminate accounts for violations of these Terms.</p>
+          <p><strong>6. Changes</strong></p>
+          <p>We may update this policy, and continued use implies acceptance of changes.</p>
+          <br>
+          <p>By registering, you confirm understanding and agreement to this Privacy Policy & Terms.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

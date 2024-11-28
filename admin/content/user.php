@@ -1,5 +1,5 @@
 <?php
-$queryDataUser = mysqli_query($connection, "SELECT user.id, user.deleted_at, user.username, user.email, level.level_name FROM user LEFT JOIN level ON user.id_level = level.id ORDER BY user.id_level DESC, user.id DESC");
+$queryDataUser = mysqli_query($connection, "SELECT user.id, user.deleted_at, user.username, user.email, level.level_name FROM user LEFT JOIN level ON user.id_level = level.id ORDER BY user.id_level DESC, user.updated_at DESC");
 ?>
 <div class="card mt-3">
     <div class="card-header">
@@ -8,17 +8,17 @@ $queryDataUser = mysqli_query($connection, "SELECT user.id, user.deleted_at, use
     <div class="card-body">
         <?php if (isset($_GET['edit']) && $_GET['edit'] == 'success'): ?>
             <div class="alert alert-success alert-dismissible" role="alert">
-                your data has been EDITED successfully.
+                Your data has been EDITED successfully.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php elseif (isset($_GET['delete']) && $_GET['delete'] == 'success'): ?>
             <div class="alert alert-success alert-dismissible" role="alert">
-                your data has been DELETED successfully.
+                Your data has been DELETED successfully.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php elseif (isset($_GET['add']) && $_GET['add'] == 'success'): ?>
             <div class="alert alert-success alert-dismissible" role="alert">
-                your data has been ADDED successfully.
+                Your data has been ADDED successfully.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php endif ?>

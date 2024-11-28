@@ -7,7 +7,7 @@ $queryEdit = mysqli_query($connection, "SELECT * FROM user WHERE id='$idEdit'");
 $rowEdit = mysqli_fetch_assoc($queryEdit);
 
 if (isset($_POST['edit'])) {
-    $name = $_POST['name'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
 
     if (!empty($_FILES['photo']['name'])) {
@@ -20,13 +20,15 @@ if (isset($_POST['edit'])) {
             header("Location: ?page=my-profile&edit=errorExtension");
             die;
         } else {
-            unlink('img/profile_picture/' . $rowEdit['photo']);
+            if (file_exists('img/profile_picture/' . $rowEdit['profile_picture'])) {
+                unlink('img/profile_picture/' . $rowEdit['profile_picture']);
+            }
             $new_image_name = "profile_picture" . $idEdit . "." . $img_ext;
             move_uploaded_file($_FILES['photo']['tmp_name'], 'img/profile_picture/' . $new_image_name);
-            $queryEdit = mysqli_query($connection, "UPDATE user SET name='$name', email='$email', profile_picture='$new_image_name' WHERE id='$idEdit'");
+            $queryEdit = mysqli_query($connection, "UPDATE user SET username='$username', email='$email', profile_picture='$new_image_name' WHERE id='$idEdit'");
         }
     }
-    $queryEdit = mysqli_query($connection, "UPDATE user SET name='$name', email='$email' WHERE id='$idEdit'");
+    $queryEdit = mysqli_query($connection, "UPDATE user SET username='$username', email='$email' WHERE id='$idEdit'");
     header("Location: ?page=my-profile&edit=success");
     die;
 }
@@ -64,8 +66,8 @@ $queryLevel = mysqli_query($connection, "SELECT * FROM level");
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="name" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama"
-                        value="<?= isset($rowEdit['name']) ? $rowEdit['name'] : '' ?>" required>
+                    <input type="text" class="form-control" id="name" name="username" placeholder="Masukkan nama"
+                        value="<?= isset($rowEdit['username']) ? $rowEdit['username'] : '' ?>" required>
                 </div>
                 <div class="col-sm-6 mb-3">
                     <label for="email" class="form-label">Email</label>

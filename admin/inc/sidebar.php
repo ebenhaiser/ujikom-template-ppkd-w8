@@ -56,7 +56,7 @@
 
     <div class="menu-inner-shadow"></div>
 
-    <ul class="menu-inner py-1">
+    <ul class="menu-inner py-1 mt-3">
         <!-- Dashboard -->
         <li class="menu-item <?= !isset($_GET['page']) || ($_GET['page'] == 'dashboard') ? 'active' : '' ?>">
             <a href="?page=dashboard" class="menu-link">

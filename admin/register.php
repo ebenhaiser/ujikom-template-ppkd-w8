@@ -20,12 +20,12 @@ if (isset($_POST['register'])) {
     header("location: ?error=notAgreeTerms");
     die;
   } else {
-    $queryRegister = mysqli_query($connection, "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')");
-    if ($queryRegister) {
-      header("location: login.php?register=success");
+    $queryRegister = mysqli_query($connection, "INSERT INTO user (username, email, password) VALUES ('$username', '$email', '$password')");
+    if (!$queryRegister) {
+      header("location: ?error=registerFailed");
       die;
     } else {
-      header("location: ?error=registerFailed");
+      header("location: login.php?register=success");
       die;
     }
   }
@@ -166,8 +166,20 @@ if (isset($_POST['register'])) {
             <p class="mb-4">Make your account to get access!</p>
 
             <?php if (isset($_GET['error']) && $_GET['error'] == 'emailAlreadyRegistered'): ?>
+              <div class="alert alert-danger alert-dismissible" role="alert">
+                This EMAIL is already registered.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
             <?php elseif (isset($_GET['error']) && $_GET['error'] == 'usernameAlreadyRegistered'): ?>
+              <div class="alert alert-danger alert-dismissible" role="alert">
+                This USERNAME is already registered.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
             <?php elseif (isset($_GET['error']) && $_GET['error'] == 'notAgreeTerms'): ?>
+              <div class="alert alert-danger alert-dismissible" role="alert">
+                You must agree to the terms and conditions to proceed.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
             <?php endif ?>
 
             <form id="formAuthentication" class="mb-3" action="" method="POST">
@@ -216,7 +228,7 @@ if (isset($_POST['register'])) {
 
             <p class="text-center">
               <span>Already have an account?</span>
-              <a href="auth-login-basic.html">
+              <a href="login.php">
                 <span>Sign in instead</span>
               </a>
             </p>
@@ -228,13 +240,6 @@ if (isset($_POST['register'])) {
   </div>
 
   <!-- / Content -->
-
-  <div class="buy-now">
-    <a
-      href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-      target="_blank"
-      class="btn btn-danger btn-buy-now">Upgrade to Pro</a>
-  </div>
 
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->

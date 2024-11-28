@@ -160,7 +160,12 @@ if (isset($_POST['login'])) {
 
             <?php if (isset($_GET['login']) && $_GET['login'] == 'failed') : ?>
               <div class="alert alert-danger alert-dismissible" role="alert">
-                Invalid email or password!
+                Invalid email or password.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <?php elseif (isset($_GET['register']) && $_GET['register'] == 'success'): ?>
+              <div class="alert alert-success alert-dismissible" role="alert">
+                Your account has registered successfully.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
             <?php endif ?>

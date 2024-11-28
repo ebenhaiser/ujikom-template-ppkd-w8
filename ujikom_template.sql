@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2024 at 06:33 AM
+-- Generation Time: Nov 28, 2024 at 03:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `angkatan3_laundry`
+-- Database: `ujikom_template`
 --
 
 -- --------------------------------------------------------
@@ -176,7 +176,7 @@ INSERT INTO `type_of_service` (`id`, `service_name`, `price`, `description`, `cr
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `id_level` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `profile_picture` varchar(50) NOT NULL,
@@ -189,8 +189,8 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `id_level`, `name`, `email`, `password`, `profile_picture`, `created at`, `updated at`, `deleted_at`) VALUES
-(1, 3, 'Admin', 'admin@gmail.com', '12345678', 'profile_picture1.jpeg', '2024-11-11 02:30:45', '2024-11-15 07:16:38', 0),
+INSERT INTO `user` (`id`, `id_level`, `username`, `email`, `password`, `profile_picture`, `created at`, `updated at`, `deleted_at`) VALUES
+(1, 3, 'Admin', 'admin@gmail.com', '12345678', 'profile_picture1.jpg', '2024-11-11 02:30:45', '2024-11-28 01:53:03', 0),
 (4, 1, 'Admin Aplikasi', 'admin.aplikasi@gmail.com', '12345678', '', '2024-11-11 07:40:43', '2024-11-15 04:20:44', 1),
 (5, 2, 'PIC Jurusan Web Programming', 'pic.jurusan.16@gmail.com', '12345678', '', '2024-11-12 01:28:54', '2024-11-15 04:20:42', 1),
 (6, 2, 'PIC Jurusan Content Creator', 'pic.jurusan.15@gmail.com', '12345678', 'foto_profil_user6.jpg', '2024-11-12 02:20:00', '2024-11-20 13:42:07', 0),

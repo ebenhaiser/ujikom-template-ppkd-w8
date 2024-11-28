@@ -56,16 +56,19 @@ $queryLevel = mysqli_query($connection, "SELECT * FROM level");
                     <select class="form-control" name="id_level" id="">
                         <option value=""> -- Add Level -- </option>
                         <?php while ($rowLevel = mysqli_fetch_assoc($queryLevel)) : ?>
-                            <option value="<?= $rowLevel['id'] ?>"
-                                <?= isset($_GET['edit']) && ($rowLevel['id'] == $rowEdit['id_level']) ? 'selected' : '' ?>>
-                                <?= $rowLevel['level_name'] ?></option>
+                        <option value="<?= $rowLevel['id'] ?>"
+                            <?= isset($_GET['edit']) && ($rowLevel['id'] == $rowEdit['id_level']) ? 'selected' : '' ?>>
+                            <?= $rowLevel['level_name'] ?></option>
                         <?php endwhile ?>
                     </select>
                 </div>
-                <div class="col-sm-6 mb-3">
-                    <label for="password" class="form-label">password</label>
-                    <input type="password" class="form-control" id="password" name="password" for="password"
-                        placeholder="Masukkan password" <?= isset($_GET['edit']) ? '' : 'required' ?>>
+                <div class="col-sm-6 form-group mb-3 form-password-toggle">
+                    <label for="" class="form-label">Old Password</label>
+                    <div class="input-group input-group-merge">
+                        <input type="password" id="password" class="form-control" name="password"
+                            placeholder="Enter your password" aria-describedby="password" />
+                        <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    </div>
                 </div>
             </div>
             <div class="">

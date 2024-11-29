@@ -83,6 +83,13 @@
                 <div data-i18n="Analytics">Customers</div>
             </a>
         </li>
+        <li
+            class="menu-item <?= (isset($_GET['page']) && ($_GET['page'] == 'service' || $_GET['page'] == 'add-service')) ? 'active' : '' ?>">
+            <a href="?page=service" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-package"></i>
+                <div data-i18n="Analytics">Service</div>
+            </a>
+        </li>
 
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>

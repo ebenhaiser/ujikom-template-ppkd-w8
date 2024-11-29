@@ -12,19 +12,19 @@ if (isset($_GET['delete'])) {
     $rowEdit = mysqli_fetch_assoc($queryEdit);
     if (isset($_POST['edit'])) {
         $service_name = $_POST['service_name'];
-        $phone = $_POST['phone'];
-        $address = $_POST['address'];
+        $price = $_POST['price'];
+        $description = $_POST['description'];
 
-        $queryEdit = mysqli_query($connection, "UPDATE type_of_service SET service_name='$service_name', phone='$phone', address='$address' WHERE id='$idEdit'");
+        $queryEdit = mysqli_query($connection, "UPDATE type_of_service SET service_name='$service_name', price='$price', description='$description' WHERE id='$idEdit'");
         header("Location: ?page=service&edit=success");
         die;
     }
 } else if (isset($_POST['add'])) {
     $service_name = $_POST['service_name'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
+    $price = $_POST['price'];
+    $description = $_POST['description'];
 
-    $queryAdd = mysqli_query($connection, "INSERT INTO type_of_service (service_name, phone, address) VALUES ('$service_name', '$phone', '$address')");
+    $queryAdd = mysqli_query($connection, "INSERT INTO type_of_service (service_name, price, description) VALUES ('$service_name', '$price', '$description')");
     header("Location: ?page=service&add=success");
     die;
 }
@@ -46,12 +46,12 @@ if (isset($_GET['delete'])) {
                     <label for="" class="form-label">Price</label>
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">Rp.</span>
-                        <input type="number" name="pickup_pay" style="" class="form-control" placeholder="Input Paid Amount" value="<?= isset($_GET['edit']) ? $rowEdit['price'] : '' ?>">
+                        <input type="number" name="price" style="" class="form-control" placeholder="Enter service price" value="<?= isset($_GET['edit']) ? $rowEdit['price'] : '' ?>">
                     </div>
                 </div>
                 <div class="col-sm-6 mb-3">
                     <label for="" class="form-label">Description</label>
-                    <textarea name="description" id="" class="form-control" placeholder="Enter description"><?= isset($_GET['edit']) ? $rowEdit['description'] : '' ?></textarea>
+                    <textarea name="description" id="" class="form-control" placeholder="Enter service description"><?= isset($_GET['edit']) ? $rowEdit['description'] : '' ?></textarea>
                 </div>
             </div>
             <div class="">

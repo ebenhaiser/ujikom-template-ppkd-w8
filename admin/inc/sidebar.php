@@ -76,6 +76,13 @@
                 <div data-i18n="Analytics">Users</div>
             </a>
         </li>
+        <li
+            class="menu-item <?= (isset($_GET['page']) && ($_GET['page'] == 'customer' || $_GET['page'] == 'add-customer')) ? 'active' : '' ?>">
+            <a href="?page=customer" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-pin"></i>
+                <div data-i18n="Analytics">Customers</div>
+            </a>
+        </li>
 
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>

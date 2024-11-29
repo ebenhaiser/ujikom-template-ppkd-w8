@@ -43,12 +43,12 @@ $queryLevel = mysqli_query($connection, "SELECT * FROM level");
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="username" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan nama"
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter Name"
                         value="<?= isset($_GET['edit']) ? $rowEdit['username'] : '' ?>" required>
                 </div>
                 <div class="col-sm-6 mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email"
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email"
                         value="<?= isset($_GET['edit']) ? $rowEdit['email'] : '' ?>" required>
                 </div>
                 <div class="col-sm-6 mb-3">
@@ -56,9 +56,9 @@ $queryLevel = mysqli_query($connection, "SELECT * FROM level");
                     <select class="form-control" name="id_level" id="">
                         <option value=""> -- Add Level -- </option>
                         <?php while ($rowLevel = mysqli_fetch_assoc($queryLevel)) : ?>
-                        <option value="<?= $rowLevel['id'] ?>"
-                            <?= isset($_GET['edit']) && ($rowLevel['id'] == $rowEdit['id_level']) ? 'selected' : '' ?>>
-                            <?= $rowLevel['level_name'] ?></option>
+                            <option value="<?= $rowLevel['id'] ?>"
+                                <?= isset($_GET['edit']) && ($rowLevel['id'] == $rowEdit['id_level']) ? 'selected' : '' ?>>
+                                <?= $rowLevel['level_name'] ?></option>
                         <?php endwhile ?>
                     </select>
                 </div>
@@ -66,7 +66,7 @@ $queryLevel = mysqli_query($connection, "SELECT * FROM level");
                     <label for="" class="form-label">Old Password</label>
                     <div class="input-group input-group-merge">
                         <input type="password" id="password" class="form-control" name="password"
-                            placeholder="Enter your password" aria-describedby="password" />
+                            placeholder="Enter password" aria-describedby="password" />
                         <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 <?php
 $queryData = mysqli_query($connection, "SELECT user.id, user.deleted_at, user.username, user.email, level.level_name FROM user LEFT JOIN level ON user.id_level = level.id ORDER BY user.id_level DESC, user.updated_at DESC");
 ?>
-<div class="card mt-3">
+<div class="card shadow">
     <div class="card-header">
         <h3>Data User</h3>
     </div>

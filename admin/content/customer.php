@@ -1,7 +1,7 @@
 <?php
 $queryData = mysqli_query($connection, "SELECT * FROM customer ORDER BY updated_at DESC");
 ?>
-<div class="card mt-3">
+<div class="card shadow">
     <div class="card-header">
         <h3>Data Customer</h3>
     </div>

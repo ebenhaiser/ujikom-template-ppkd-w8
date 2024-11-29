@@ -43,13 +43,15 @@ if (isset($_GET['delete'])) {
                         value="<?= isset($_GET['edit']) ? $rowEdit['service_name'] : '' ?>" required>
                 </div>
                 <div class="col-sm-6 mb-3">
-                    <label for="" class="form-label">Phone</label>
-                    <input type="text" class="form-control" id="" name="phone" placeholder="Enter phone number"
-                        value="<?= isset($_GET['edit']) ? $rowEdit['phone'] : '' ?>" required>
+                    <label for="" class="form-label">Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">Rp.</span>
+                        <input type="number" name="pickup_pay" style="" class="form-control" placeholder="Input Paid Amount" value="<?= isset($_GET['edit']) ? $rowEdit['price'] : '' ?>">
+                    </div>
                 </div>
                 <div class="col-sm-6 mb-3">
-                    <label for="" class="form-label">Address</label>
-                    <textarea name="address" id="" class="form-control" placeholder="Enter customer address"><?= isset($_GET['edit']) ? $rowEdit['address'] : '' ?></textarea>
+                    <label for="" class="form-label">Description</label>
+                    <textarea name="description" id="" class="form-control" placeholder="Enter description"><?= isset($_GET['edit']) ? $rowEdit['description'] : '' ?></textarea>
                 </div>
             </div>
             <div class="">

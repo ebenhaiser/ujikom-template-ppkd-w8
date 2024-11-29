@@ -151,7 +151,7 @@ if (isset($_POST['login'])) {
                   </svg> -->
                   <img src="https://placehold.co/50" alt="">
                 </span>
-                <span class="app-brand-text demo text-body fw-bolder">Admin</span>
+                <span class="app-brand-text demo text-body fw-bolder" style="text-transform: none">Admin</span>
               </a>
             </div>
             <!-- /Logo -->

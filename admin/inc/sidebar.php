@@ -46,7 +46,7 @@
                 </svg> -->
                 <img src="https://placehold.co/50" alt="">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: none">Admin</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

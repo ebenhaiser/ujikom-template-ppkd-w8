@@ -8,7 +8,7 @@ $queryData = mysqli_query($connection, "SELECT user.id, user.deleted_at, user.us
     <div class="card-body">
         <?php include 'controller/alert-data-crud.php' ?>
         <div align="right" class="button-action">
-            <a href="?page=add-user" class="btn btn-primary">Add</a>
+            <a href="?page=add-user" class="btn btn-primary"><i class='bx bx-plus'></i></a>
         </div>
         <table class="table table-bordered table-striped table-hover table-responsive mt-3">
             <thead>

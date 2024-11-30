@@ -37,7 +37,7 @@ $queryData = mysqli_query($connection, "SELECT trans_order.*, customer.customer_
                         <td>
                             <a href="?page=add-pickup&pickup=<?php echo $rowData['id'] ?>">
                                 <button class="btn btn-secondary">
-                                    <i class="tf-icon bx bx-show bx-22px"></i>
+                                    <i class="tf-icon bx bx-package bx-22px"></i>
                                 </button>
                             </a>
                             <a onclick="return confirm ('Apakah anda yakin akan menghapus data ini?')"

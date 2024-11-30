@@ -236,6 +236,7 @@ $queryCustomer = mysqli_query($connection,  "SELECT * FROM customer");
                 </table>
                 <input type="hidden" name="order_status" value="0">
                 <div align="right">
+                    <a href="?page=order" class="btn btn-secondary">Back</a>
                     <button class="btn btn-primary" type="submit" name="add_order">Add</button>
                 </div>
             </div>

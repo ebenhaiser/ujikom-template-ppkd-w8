@@ -57,7 +57,8 @@ if (isset($_GET['delete'])) {
                         placeholder="Enter service description"><?= isset($_GET['edit']) ? $rowEdit['description'] : '' ?></textarea>
                 </div>
             </div>
-            <div class="">
+            <div class="" align="right">
+                <a href="?page=service" class="btn btn-secondary">Back</a>
                 <button type="submit" class="btn btn-primary"
                     name="<?php echo isset($_GET['edit']) ? 'edit' : 'add' ?>">
                     <?php echo isset($_GET['edit']) ? 'Edit' : 'Add' ?>

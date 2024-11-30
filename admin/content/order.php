@@ -1,9 +1,11 @@
 <?php
-$queryData = mysqli_query($connection, "SELECT * FROM customer ORDER BY updated_at DESC");
+require_once 'controller/connection.php';
+
+$queryData = mysqli_query($connection, "SELECT trans_order.*, customer.customer_name FROM trans_order LEFT JOIN customer ON trans_order.id_customer = customer.id ORDER BY trans_order.order_status DESC, trans_order.updated_at DESC")
 ?>
 <div class="card shadow">
     <div class="card-header">
-        <h3>Data Customer</h3>
+        <h3>Data Order</h3>
     </div>
     <div class="card-body">
         <?php include 'controller/alert-data-crud.php' ?>
@@ -26,11 +28,12 @@ $queryData = mysqli_query($connection, "SELECT * FROM customer ORDER BY updated_
                 $no = 1;
                 while ($rowData = mysqli_fetch_assoc($queryData)) : ?>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?= $no++ ?></td>
+                        <td><?= isset($rowData['order_code']) ? $rowData['order_code'] : '-' ?></td>
+                        <td><?= isset($rowData['customer_name']) ? $rowData['customer_name'] : '-' ?></td>
+                        <td><?= isset($rowData['order_date']) ? $rowData['order_date'] : '-' ?></td>
+                        <?php $statusOrder = getOrderStatus($rowData['order_status']) ?>
+                        <td><?= $statusOrder ?></td>
                         <td>
                             <a href="?page=add-order&view=<?php echo $rowData['id'] ?>">
                                 <button class="btn btn-secondary">

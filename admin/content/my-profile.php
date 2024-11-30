@@ -106,7 +106,7 @@ $queryLevel = mysqli_query($connection, "SELECT * FROM level");
             </div>
             <div class="">
                 <button type="submit" class="btn btn-primary" name="edit">
-                    Edit
+                    Edit Profile
                 </button>
             </div>
         </form>

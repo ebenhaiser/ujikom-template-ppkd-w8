@@ -31,3 +31,15 @@ function loginValidation()
         return true;
     }
 }
+
+function getOrderStatus($status)
+{
+    switch ($status) {
+        case 0:
+            return '<span class="badge bg-label-warning">New</span>';
+        case 1:
+            return '<span class="badge bg-label-success">Picked Up</span>';
+        default:
+            return '<span class="badge bg-label-secondary">Unknown Status</span>';
+    }
+}

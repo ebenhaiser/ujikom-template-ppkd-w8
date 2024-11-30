@@ -4,6 +4,7 @@ session_regenerate_id();
 ob_start();
 ob_clean();
 require_once 'controller/connection.php';
+require_once 'controller/functions.php';
 if (empty($_SESSION['id'])) {
   header('Location: controller/logout.php');
 }
@@ -95,9 +96,6 @@ if (empty($_SESSION['id'])) {
   <!-- / Layout wrapper -->
 
   <?php include 'inc/script.php' ?>
-  <script>
-
-  </script>
 </body>
 
 </html>

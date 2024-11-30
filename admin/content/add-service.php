@@ -45,13 +45,16 @@ if (isset($_GET['delete'])) {
                 <div class="col-sm-6 mb-3">
                     <label for="" class="form-label">Price</label>
                     <div class="input-group">
-                        <span class="input-group-text" id="basic-addon1">Rp.</span>
-                        <input type="number" name="price" style="" class="form-control" placeholder="Enter service price" value="<?= isset($_GET['edit']) ? $rowEdit['price'] : '' ?>">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="number" name="price" style="" class="form-control"
+                            placeholder="Enter service price"
+                            value="<?= isset($_GET['edit']) ? $rowEdit['price'] : '' ?>">
                     </div>
                 </div>
                 <div class="col-sm-6 mb-3">
                     <label for="" class="form-label">Description</label>
-                    <textarea name="description" id="" class="form-control" placeholder="Enter service description"><?= isset($_GET['edit']) ? $rowEdit['description'] : '' ?></textarea>
+                    <textarea name="description" id="" class="form-control"
+                        placeholder="Enter service description"><?= isset($_GET['edit']) ? $rowEdit['description'] : '' ?></textarea>
                 </div>
             </div>
             <div class="">

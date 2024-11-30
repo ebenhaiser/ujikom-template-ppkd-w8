@@ -27,7 +27,8 @@ $queryData = mysqli_query($connection, "SELECT * FROM type_of_service ORDER BY u
                     <tr>
                         <td><?= $no++ ?></td>
                         <td><?= isset($rowData['service_name']) ? $rowData['service_name'] : '-' ?></td>
-                        <td><?= isset($rowData['price']) ? 'Rp. ' . number_format($rowData['price'], 2) : '-' ?></td>
+                        <td><?= isset($rowData['price']) ? 'Rp ' . number_format($rowData['price'], 2, ',', '.') : '-' ?>
+                        </td>
                         <td><?= isset($rowData['description']) ? $rowData['description'] : '-' ?></td>
                         <td>
                             <a href="?page=add-service&edit=<?php echo $rowData['id'] ?>">

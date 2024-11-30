@@ -94,7 +94,10 @@ if (empty($_SESSION['id'])) {
   </div>
   <!-- / Layout wrapper -->
 
-  <?php include 'inc/js.php' ?>
+  <?php include 'inc/script.php' ?>
+  <script>
+
+  </script>
 </body>
 
 </html>

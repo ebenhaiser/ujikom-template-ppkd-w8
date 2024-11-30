@@ -73,14 +73,14 @@
             class="menu-item <?= (isset($_GET['page']) && ($_GET['page'] == 'user' || $_GET['page'] == 'add-user')) ? 'active' : '' ?>">
             <a href="?page=user" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="Analytics">Users</div>
+                <div data-i18n="Analytics">User</div>
             </a>
         </li>
         <li
             class="menu-item <?= (isset($_GET['page']) && ($_GET['page'] == 'customer' || $_GET['page'] == 'add-customer')) ? 'active' : '' ?>">
             <a href="?page=customer" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-pin"></i>
-                <div data-i18n="Analytics">Customers</div>
+                <div data-i18n="Analytics">Customer</div>
             </a>
         </li>
         <li

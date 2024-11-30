@@ -43,6 +43,12 @@ if (isset($_POST['add_order'])) {
     // trans order detail data
     $orderViewID = $rowView['id'];
     $queryOrderList = mysqli_query($connection, "SELECT trans_order_detail.*, type_of_service.* FROM trans_order_detail LEFT JOIN type_of_service ON trans_order_detail.id_service = type_of_service.id WHERE trans_order_detail.id_order = '$orderViewID'");
+} else if (isset($_GET['delete'])) {
+    $idDelete = $_GET['delete'];
+    $queryDelete = mysqli_query($connection, "DELETE FROM trans_order WHERE id='$idDelete'");
+    $queryDeleteDetail = mysqli_query($connection, "DELETE FROM trans_order_detail WHERE id_order='$idDelete'");
+    header("Location:?page=order&delete=success");
+    die;
 }
 
 
@@ -145,7 +151,7 @@ $queryCustomer = mysqli_query($connection,  "SELECT * FROM customer");
             </table>
             <div class="mt-3 gap-3" align="right">
                 <a href="?page=order" class="btn btn-secondary">Back</a>
-                <a href="?page=pickup&pickup=<?= $rowView['id'] ?>" class="btn btn-primary">Pick Up</a>
+                <a href="?page=add-pickup&pickup=<?= $rowView['id'] ?>" class="btn btn-primary">Pick Up</a>
             </div>
         </div>
     </div>

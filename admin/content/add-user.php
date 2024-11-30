@@ -36,7 +36,7 @@ $queryLevel = mysqli_query($connection, "SELECT * FROM level");
 
 <div class="card shadow">
     <div class="card-header">
-        <h3><?= isset($_GET['edit']) ? 'Edit' : 'Add' ?> Data User</h3>
+        <h3><?= isset($_GET['edit']) ? 'Edit' : 'Add' ?> User</h3>
     </div>
     <div class="card-body">
         <form action="" method="post">

@@ -32,7 +32,7 @@ if (isset($_GET['delete'])) {
 
 <div class="card shadow">
     <div class="card-header">
-        <h3><?= isset($_GET['edit']) ? 'Edit' : 'Add' ?> Data Service</h3>
+        <h3><?= isset($_GET['edit']) ? 'Edit' : 'Add' ?> Service</h3>
     </div>
     <div class="card-body">
         <form action="" method="post">

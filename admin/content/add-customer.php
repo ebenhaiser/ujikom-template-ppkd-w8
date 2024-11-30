@@ -32,7 +32,7 @@ if (isset($_GET['delete'])) {
 
 <div class="card shadow">
     <div class="card-header">
-        <h3><?= isset($_GET['edit']) ? 'Edit' : 'Add' ?> Data Customer</h3>
+        <h3><?= isset($_GET['edit']) ? 'Edit' : 'Add' ?> Customer</h3>
     </div>
     <div class="card-body">
         <form action="" method="post">
@@ -49,7 +49,8 @@ if (isset($_GET['delete'])) {
                 </div>
                 <div class="col-sm-6 mb-3">
                     <label for="" class="form-label">Address</label>
-                    <textarea name="address" id="" class="form-control" placeholder="Enter customer address"><?= isset($_GET['edit']) ? $rowEdit['address'] : '' ?></textarea>
+                    <textarea name="address" id="" class="form-control"
+                        placeholder="Enter customer address"><?= isset($_GET['edit']) ? $rowEdit['address'] : '' ?></textarea>
                 </div>
             </div>
             <div class="">

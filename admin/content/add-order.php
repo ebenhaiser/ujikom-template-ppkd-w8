@@ -73,16 +73,7 @@ $queryCustomer = mysqli_query($connection, "SELECT * FROM customer");
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <?php //while(): 
-                        ?>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <?php //endwhile 
-                        ?>
-                    </tr>
+
                 </tbody>
             </table>
             <div align="right">

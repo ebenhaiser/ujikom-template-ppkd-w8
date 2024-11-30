@@ -32,7 +32,7 @@ $queryCustomer = mysqli_query($connection, "SELECT * FROM customer");
                     <select name="id_customer" id="" class="form-control">
                         <option value="">-- choose customer --</option>
                         <?php while ($rowCustomer = mysqli_fetch_assoc($queryCustomer)) : ?>
-                        <option value="<?= $rowCustomer['id'] ?>"><?= $rowCustomer['customer_name'] ?></option>
+                            <option value="<?= $rowCustomer['id'] ?>"><?= $rowCustomer['customer_name'] ?></option>
                         <?php endwhile ?>
                     </select>
                 </div>
@@ -48,7 +48,7 @@ $queryCustomer = mysqli_query($connection, "SELECT * FROM customer");
                     <select name="" id="" class="form-control">
                         <option value="">-- choose service --</option>
                         <?php while ($rowService = mysqli_fetch_assoc($queryService)): ?>
-                        <option value="<?= $rowService['id'] ?>"><?= $rowService['service_name'] ?></option>
+                            <option value="<?= $rowService['id'] ?>"><?= $rowService['service_name'] ?></option>
                         <?php endwhile ?>
                     </select>
                 </div>
@@ -73,6 +73,16 @@ $queryCustomer = mysqli_query($connection, "SELECT * FROM customer");
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <?php //while(): 
+                        ?>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <?php //endwhile 
+                        ?>
+                    </tr>
                 </tbody>
                 <tfooter>
                     <tr>

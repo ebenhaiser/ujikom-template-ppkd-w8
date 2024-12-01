@@ -110,7 +110,9 @@ $queryCustomer = mysqli_query($connection,  "SELECT * FROM customer");
                 <div class="col-sm-4">
                     <div class="form-group mb-3">
                         <label for="" class="form-label">Pickup Date</label>
-                        <input type="date" class="form-control" name="pickup_date" required>
+                        <input type="date" class="form-control" name="pickup_date"
+                            value="<?= $rowView['order_status'] == 1 ? $rowViewPickup['pickup_date'] : '' ?>"
+                            <?= $rowView['order_status'] == 1 ? 'readonly' : '' ?> required>
                     </div>
                 </div>
             </div>
@@ -156,7 +158,7 @@ $queryCustomer = mysqli_query($connection,  "SELECT * FROM customer");
                                         placeholder="Enter amount pay" required>
                                 </div>
                             </td>
-                        <?php else : ?>
+                        <?php elseif ($rowView['order_status'] == 1) : ?>
                             <td><?= 'Rp. ' . number_format($rowViewPickup['pickup_pay'], 2, ',', '.') ?></td>
                         <?php endif ?>
                     </tr>
@@ -168,7 +170,7 @@ $queryCustomer = mysqli_query($connection,  "SELECT * FROM customer");
                                     style="border: none; outline: none;" readonly>
                                 <input type="hidden" name="pickup_change" id="pickup_change" readonly>
                             </td>
-                        <?php else : ?>
+                        <?php elseif ($rowView['order_status'] == 1) : ?>
                             <td><?= 'Rp ' . number_format($rowViewPickup['pickup_change'], 2, ',', '.') ?></td>
                         <?php endif  ?>
                     </tr>

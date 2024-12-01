@@ -58,7 +58,7 @@ if (isset($_POST['login'])) {
   <meta name="description" content="" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/admin/assets/img/favicon/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="img/logo/logo3.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -149,9 +149,9 @@ if (isset($_POST['login'])) {
                       </g>
                     </g>
                   </svg> -->
-                  <img src="https://placehold.co/50" alt="">
+                  <img src="img/logo/logo3.png" alt="" width="80px">
                 </span>
-                <span class="app-brand-text demo text-body fw-bolder" style="text-transform: none">Admin</span>
+                <span class="app-brand-text demo text-body fw-bolder" style="text-transform: none">Laundry Faith</span>
               </a>
             </div>
             <!-- /Logo -->

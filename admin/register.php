@@ -156,9 +156,9 @@ if (isset($_POST['register'])) {
                       </g>
                     </g>
                   </svg> -->
-                  <img src="https://placehold.co/50" alt="">
+                  <img src="img/logo/logo3.png" alt="" width="80px">
                 </span>
-                <span class="app-brand-text demo text-body fw-bolder" style="text-transform: none">Admin</span>
+                <span class="app-brand-text demo text-body fw-bolder" style="text-transform: none">Laundry Faith</span>
               </a>
             </div>
             <!-- /Logo -->

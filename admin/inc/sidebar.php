@@ -44,9 +44,10 @@
                         </g>
                     </g>
                 </svg> -->
-                <img src="https://placehold.co/50" alt="">
+                <img src="img/logo/logo3.png" alt="" width="70px">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: none">Admin</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2"
+                style="text-transform: none">Laundry<br>Faith</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

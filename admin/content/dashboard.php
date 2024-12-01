@@ -23,7 +23,7 @@ $rowDashboard = mysqli_fetch_array($queryDashboard);
     <div class="card-body d-flex align-items-center justify-content-center gap-3">
         <div class="row">
             <div class="col-sm-12 mb-5" align="center">
-                <img src="https://placehold.co/400" alt="">
+                <img src="img/logo/logo3.png" alt="">
             </div>
             <div class="col-sm-12" align="center">
                 <h2>Welcome, <?= $rowDashboard['username'] ?>!</h2>

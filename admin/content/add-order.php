@@ -16,9 +16,10 @@ if (isset($_POST['add_order'])) {
     $order_code = $_POST['order_code'];
     $order_date = $_POST['order_date'];
     $order_status = $_POST['order_status'];
+    $total_price = $_POST['total_price'];
     $id_service = $_POST['id_service'];
 
-    $insert_trans_order = mysqli_query($connection, "INSERT INTO trans_order (id_customer, order_code, order_date, order_status) VALUES ('$id_customer', '$order_code', '$order_date','$order_status')");
+    $insert_trans_order = mysqli_query($connection, "INSERT INTO trans_order (id_customer, order_code, order_date, order_status, total_price) VALUES ('$id_customer', '$order_code', '$order_date','$order_status', '$total_price')");
     $trans_order_id = mysqli_insert_id($connection);
 
     foreach ($id_service as $key => $value) {
@@ -47,6 +48,7 @@ if (isset($_POST['add_order'])) {
     $idDelete = $_GET['delete'];
     $queryDelete = mysqli_query($connection, "DELETE FROM trans_order WHERE id='$idDelete'");
     $queryDeleteDetail = mysqli_query($connection, "DELETE FROM trans_order_detail WHERE id_order='$idDelete'");
+    $queryDeletePickup = mysqli_query($connection, "DELETE FROM trans_laundry_pickup WHERE id_order = '$idDelete'");
     header("Location:?page=order&delete=success");
     die;
 }
@@ -126,7 +128,6 @@ $queryCustomer = mysqli_query($connection,  "SELECT * FROM customer");
                 </thead>
                 <tbody>
                     <?php
-                    $total_price_view = 0;
                     while ($rowOrderList = mysqli_fetch_assoc($queryOrderList)):
                     ?>
                         <tr>
@@ -138,20 +139,18 @@ $queryCustomer = mysqli_query($connection,  "SELECT * FROM customer");
                             </td>
                         </tr>
                     <?php
-                        $total_price_view += $rowOrderList['subtotal'];
                     endwhile;
                     ?>
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="3" align="right"><strong>Total</strong></td>
-                        <td><?= 'Rp ' . number_format($total_price_view, 2, ',', '.') ?></td>
+                        <td><?= 'Rp ' . number_format($rowView['total_price'],  2, ',', '.') ?></td>
                     </tr>
                 </tfoot>
             </table>
             <div class="mt-3 gap-3" align="right">
                 <a href="?page=order" class="btn btn-secondary">Back</a>
-                <a href="?page=add-pickup&pickup=<?= $rowView['id'] ?>" class="btn btn-primary">Pick Up</a>
             </div>
         </div>
     </div>
@@ -159,7 +158,7 @@ $queryCustomer = mysqli_query($connection,  "SELECT * FROM customer");
     <form action="" method="post">
         <div class="card shadow">
             <div class="card-header">
-                <h3><?= isset($_GET['view']) ? 'View' : 'Add' ?> Order</h3>
+                <h3>Add Order</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -170,13 +169,11 @@ $queryCustomer = mysqli_query($connection,  "SELECT * FROM customer");
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label for="" class="form-label">Order Date</label>
-                        <input type="date" class="form-control" name="order_date"
-                            <?= isset($_GET['view']) ? 'readonly' : '' ?>>
+                        <input type="date" class="form-control" name="order_date">
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label for="" class="form-label">Customer Name</label>
-                        <select name="id_customer" id="" class="form-control"
-                            <?= isset($_GET['view']) ? "disabled='true'" : '' ?>>
+                        <select name="id_customer" id="" class="form-control">
                             <option value="">-- choose customer --</option>
                             <?php while ($rowCustomer = mysqli_fetch_assoc($queryCustomer)) : ?>
                                 <option value="<?= $rowCustomer['id'] ?>"><?= $rowCustomer['customer_name'] ?></option>
@@ -228,8 +225,7 @@ $queryCustomer = mysqli_query($connection,  "SELECT * FROM customer");
                             <td>
                                 <input type="text" id="total_price_formatted" style="border: none; outline: none;"
                                     class="form-control" readonly>
-                                <input type="hidden" name="total_price" id="total_price"
-                                    style="border: none; outline: none;" class="form-control" readonly>
+                                <input type="hidden" name="total_price" id="total_price" readonly>
                             </td>
                         </tr>
                     </tfoot>

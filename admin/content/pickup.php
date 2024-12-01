@@ -9,9 +9,6 @@ $queryData = mysqli_query($connection, "SELECT trans_order.*, customer.customer_
     </div>
     <div class="card-body">
         <?php include 'controller/alert-data-crud.php' ?>
-        <div align="right" class="button-action">
-            <a href="?page=add-pickup" class="btn btn-primary"><i class='bx bx-plus'></i></a>
-        </div>
         <table class="table table-bordered table-striped table-hover table-responsive mt-3">
             <thead>
                 <tr>
@@ -35,7 +32,7 @@ $queryData = mysqli_query($connection, "SELECT trans_order.*, customer.customer_
                         <?php $statusOrder = getOrderStatus($rowData['order_status']) ?>
                         <td><?= $statusOrder ?></td>
                         <td>
-                            <a href="?page=add-pickup&pickup=<?php echo $rowData['id'] ?>">
+                            <a href="?page=add-pickup&view=<?php echo $rowData['id'] ?>">
                                 <button class="btn btn-secondary">
                                     <i class="tf-icon bx bx-package bx-22px"></i>
                                 </button>

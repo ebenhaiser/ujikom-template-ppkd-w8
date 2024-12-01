@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 07:09 PM
+-- Generation Time: Dec 01, 2024 at 03:34 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -102,11 +102,19 @@ CREATE TABLE `trans_laundry_pickup` (
   `pickup_date` date NOT NULL,
   `pickup_pay` int(11) NOT NULL,
   `pickup_change` int(11) NOT NULL,
-  `notes` text NOT NULL,
+  `notes` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `trans_laundry_pickup`
+--
+
+INSERT INTO `trans_laundry_pickup` (`id`, `id_order`, `id_customer`, `pickup_date`, `pickup_pay`, `pickup_change`, `notes`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(3, 38, 1, '2024-12-02', 100000, 55000, '', '2024-12-01 04:53:43', '2024-12-01 04:53:43', 0),
+(4, 37, 2, '2024-12-02', 50000, 12000, NULL, '2024-12-01 05:47:45', '2024-12-01 05:47:45', 0);
 
 -- --------------------------------------------------------
 
@@ -120,6 +128,7 @@ CREATE TABLE `trans_order` (
   `order_code` varchar(50) NOT NULL,
   `order_date` varchar(50) NOT NULL,
   `order_status` tinyint(11) NOT NULL DEFAULT 0,
+  `total_price` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` int(11) NOT NULL DEFAULT 0
@@ -129,9 +138,10 @@ CREATE TABLE `trans_order` (
 -- Dumping data for table `trans_order`
 --
 
-INSERT INTO `trans_order` (`id`, `id_customer`, `order_code`, `order_date`, `order_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(30, 2, 'INV-20112024-0001', 'Wednesday, 20-11-2024', 0, '2024-11-20 05:06:15', '2024-11-20 05:08:19', 0),
-(31, 3, 'INV-20112024-00031', 'Wednesday, 20-11-2024', 0, '2024-11-20 05:06:41', '2024-11-20 05:06:41', 0);
+INSERT INTO `trans_order` (`id`, `id_customer`, `order_code`, `order_date`, `order_status`, `total_price`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(37, 2, 'LNDRY-202412010506421', '2024-12-01', 1, 38000, '2024-12-01 04:06:57', '2024-12-01 05:47:45', 0),
+(38, 1, 'LNDRY-2024120105070939', '2024-12-01', 1, 45000, '2024-12-01 04:07:34', '2024-12-01 04:53:43', 0),
+(39, 5, 'LNDRY-2024120106545140', '2024-12-02', 0, 13500, '2024-12-01 05:55:04', '2024-12-01 05:55:04', 0);
 
 -- --------------------------------------------------------
 
@@ -156,9 +166,11 @@ CREATE TABLE `trans_order_detail` (
 --
 
 INSERT INTO `trans_order_detail` (`id`, `id_order`, `id_service`, `qty`, `subtotal`, `notes`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(24, 30, 2, 6, 27000, NULL, '2024-11-20 05:06:15', '2024-11-20 05:06:15', 0),
-(25, 31, 1, 5, 30000, NULL, '2024-11-20 05:06:41', '2024-11-20 05:06:41', 0),
-(26, 31, 4, 7, 49000, NULL, '2024-11-20 05:06:41', '2024-11-20 05:06:41', 0);
+(38, 37, 1, 4, 24000, NULL, '2024-12-01 04:06:57', '2024-12-01 04:06:57', 0),
+(39, 37, 4, 2, 14000, NULL, '2024-12-01 04:06:57', '2024-12-01 04:06:57', 0),
+(40, 38, 1, 4, 24000, NULL, '2024-12-01 04:07:34', '2024-12-01 04:07:34', 0),
+(41, 38, 4, 3, 21000, NULL, '2024-12-01 04:07:34', '2024-12-01 04:07:34', 0),
+(42, 39, 2, 3, 13500, NULL, '2024-12-01 05:55:04', '2024-12-01 05:55:04', 0);
 
 -- --------------------------------------------------------
 
@@ -184,7 +196,7 @@ INSERT INTO `type_of_service` (`id`, `service_name`, `price`, `description`, `cr
 (1, 'Cuci dan Gosok', 6000, 'Free wife', '2024-11-15 02:58:44', '2024-11-15 06:42:22', 0),
 (2, 'Hanya Cuci', 4500, '', '2024-11-15 03:09:17', '2024-11-15 03:09:17', 0),
 (3, 'Hanya Gosok ', 5000, '', '2024-11-15 03:10:15', '2024-11-15 03:10:15', 0),
-(4, ' Laundry Besar', 7000, ' Seperti selimut, karpet, mantel dan sprei my love', '2024-11-15 03:10:35', '2024-11-15 08:34:51', 0);
+(4, ' Laundry Besar', 7000, ' Seperti selimut, karpet, mantel dan sprei my love', '2024-11-15 03:10:35', '2024-11-30 14:08:30', 0);
 
 -- --------------------------------------------------------
 
@@ -281,25 +293,25 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `trans_laundry_pickup`
 --
 ALTER TABLE `trans_laundry_pickup`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `trans_order`
 --
 ALTER TABLE `trans_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `trans_order_detail`
 --
 ALTER TABLE `trans_order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `type_of_service`
 --
 ALTER TABLE `type_of_service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`

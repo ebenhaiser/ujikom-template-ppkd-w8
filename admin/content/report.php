@@ -25,8 +25,6 @@ if ($order_date_end != '') {
 $sql .= " ORDER BY trans_order.id DESC";
 $queryData = mysqli_query($connection, $sql);
 
-echo $sql;
-die;
 
 if (isset($_GET['clear'])) {
     header("Location: ?page=report");
@@ -57,7 +55,8 @@ if (isset($_GET['clear'])) {
                             <?= isset($_GET['order_status']) && ($_GET['order_status'] == 0) ? 'selected' : '' ?>>New
                         </option>
                         <option value="1"
-                            <?= isset($_GET['order_status']) && ($_GET['order_status'] == 1) ? 'selected' : '' ?>>Done
+                            <?= isset($_GET['order_status']) && ($_GET['order_status'] == 1) ? 'selected' : '' ?>>Picked
+                            Up
                         </option>
                     </select>
                 </div>
@@ -93,21 +92,21 @@ if (isset($_GET['clear'])) {
                         <td><?= isset($rowData['pickup_date']) ? $rowData['pickup_date'] : '-' ?></td>
                         <?php $statusOrder = getOrderStatus($rowData['order_status']) ?>
                         <td><?= $statusOrder ?></td>
-                        <td>
-                            <a href="?page=add-pickup&view=<?php echo $rowData['id'] ?>">
-                                <button class="btn btn-secondary">
-                                    <i class="tf-icon bx bx-show bx-22px"></i>
-                                </button>
-                            </a>
+                        <td align="right">
                             <?php if ($rowData['order_status'] == 1): ?>
-                                <a href="content/misc/print.php?order=<?php echo $rowData['id'] ?>" target=" _blank">
+                                <a href="content/misc/print.php?order=<?php echo $rowData['id'] ?>" target="_blank">
                                     <button class="btn btn-secondary">
                                         <i class="tf-icon bx bx-printer bx-22px"></i>
                                     </button>
                                 </a>
                             <?php endif ?>
+                            <a href="?page=add-report&view=<?php echo $rowData['id'] ?>">
+                                <button class="btn btn-secondary">
+                                    <i class="tf-icon bx bx-show bx-22px"></i>
+                                </button>
+                            </a>
                             <a onclick="return confirm ('Apakah anda yakin akan menghapus data ini?')"
-                                href="?page=add-pickup&delete=<?php echo $rowData['id'] ?>">
+                                href="?page=add-report&delete=<?php echo $rowData['id'] ?>">
                                 <button class="btn btn-danger">
                                     <i class="tf-icon bx bx-trash bx-22px"></i>
                                 </button>
@@ -118,5 +117,10 @@ if (isset($_GET['clear'])) {
                 ?>
             </tbody>
         </table>
+        <div class="mt-4" align="right">
+            <span class="me-4"><i class="bx bx-show"></i> = Detail</span>
+            <span class="me-4"><i class="bx bx-printer"></i> = Print</span>
+            <span><i class="bx bx-trash"></i> = Delete</span>
+        </div>
     </div>
 </div>

@@ -52,5 +52,10 @@ $queryData = mysqli_query($connection, "SELECT trans_order.*, customer.customer_
                 ?>
             </tbody>
         </table>
+        <div class="mt-4" align="right">
+            <span class="me-4"><i class="bx bx-plus"></i> = Add</span>
+            <span class="me-4"><i class="bx bx-show"></i> = Detail</span>
+            <span><i class="bx bx-trash"></i> = Delete</span>
+        </div>
     </div>
 </div>

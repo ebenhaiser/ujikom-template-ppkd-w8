@@ -24,28 +24,33 @@ $queryData = mysqli_query($connection, "SELECT user.id, user.deleted_at, user.us
                 <?php
                 $no = 1;
                 while ($rowData = mysqli_fetch_assoc($queryData)) : ?>
-                    <tr>
-                        <td><?= $no++ ?></td>
-                        <td><?= isset($rowData['level_name']) ? $rowData['level_name'] : '-' ?></td>
-                        <td><?= isset($rowData['username']) ? $rowData['username'] : '-' ?></td>
-                        <td><?= isset($rowData['email']) ? $rowData['email'] : '-' ?></td>
-                        <td>
-                            <a href="?page=add-user&edit=<?php echo $rowData['id'] ?>">
-                                <button class="btn btn-secondary">
-                                    <i class="tf-icon bx bx-edit bx-22px"></i>
-                                </button>
-                            </a>
-                            <a onclick="return confirm ('Apakah anda yakin akan menghapus data ini?')"
-                                href="?page=add-user&delete=<?php echo $rowData['id'] ?>">
-                                <button class="btn btn-danger">
-                                    <i class="tf-icon bx bx-trash bx-22px"></i>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= isset($rowData['level_name']) ? $rowData['level_name'] : '-' ?></td>
+                    <td><?= isset($rowData['username']) ? $rowData['username'] : '-' ?></td>
+                    <td><?= isset($rowData['email']) ? $rowData['email'] : '-' ?></td>
+                    <td>
+                        <a href="?page=add-user&edit=<?php echo $rowData['id'] ?>">
+                            <button class="btn btn-secondary">
+                                <i class="tf-icon bx bx-edit bx-22px"></i>
+                            </button>
+                        </a>
+                        <a onclick="return confirm ('Apakah anda yakin akan menghapus data ini?')"
+                            href="?page=add-user&delete=<?php echo $rowData['id'] ?>">
+                            <button class="btn btn-danger">
+                                <i class="tf-icon bx bx-trash bx-22px"></i>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
                 <?php endwhile; // End While 
                 ?>
             </tbody>
         </table>
+        <div class="mt-4" align="right">
+            <span class="me-4"><i class="bx bx-plus"></i> = Add</span>
+            <span class="me-4"><i class="bx bx-edit"></i> = Edit</span>
+            <span><i class="bx bx-trash"></i> = Delete</span>
+        </div>
     </div>
 </div>

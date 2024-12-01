@@ -148,40 +148,22 @@ $queryCustomer = mysqli_query($connection,  "SELECT * FROM customer");
                         </td>
                         <input type="hidden" id="total_price_pickup" value="<?= $rowView['total_price'] ?>">
                     </tr>
-                    <tr>
-                        <td colspan="3" align="right"><strong>Amount Pay</strong></td>
-                        <?php if ($rowView['order_status'] == 0): ?>
-                            <td>
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1">Rp</span>
-                                    <input type="number" name="pickup_pay" id="pickup_pay" class="form-control"
-                                        placeholder="Enter amount pay" required>
-                                </div>
-                            </td>
-                        <?php elseif ($rowView['order_status'] == 1) : ?>
+                    <?php if ($rowView['order_status'] == 1): ?>
+                        <tr>
+                            <td colspan="3" align="right"><strong>Amount Pay</strong></td>
                             <td><?= 'Rp. ' . number_format($rowViewPickup['pickup_pay'], 2, ',', '.') ?></td>
-                        <?php endif ?>
-                    </tr>
-                    <tr>
-                        <td colspan="3" align="right"><strong>Amount Change</strong></td>
-                        <?php if ($rowView['order_status'] == 0): ?>
-                            <td>
-                                <input type="text" class="form-control" id="pickup_change_formatted"
-                                    style="border: none; outline: none;" readonly>
-                                <input type="hidden" name="pickup_change" id="pickup_change" readonly>
-                            </td>
-                        <?php elseif ($rowView['order_status'] == 1) : ?>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right"><strong>Amount Change</strong></td>
                             <td><?= 'Rp ' . number_format($rowViewPickup['pickup_change'], 2, ',', '.') ?></td>
-                        <?php endif  ?>
-                    </tr>
+                        </tr>
+                    <?php endif ?>
                 </tfoot>
             </table>
             <input type="hidden" name="order_status" value="1">
             <div class="mt-3 gap-3" align="right">
-                <a href="?page=pickup" class="btn btn-secondary">Back</a>
-                <?php if ($rowView['order_status'] == 0): ?>
-                    <button class="btn btn-primary" name="pickup" type="submit">Pickup</button>
-                <?php elseif ($rowView['order_status'] == 1): ?>
+                <a href="?page=report" class="btn btn-secondary">Back</a>
+                <?php if ($rowView['order_status'] == 1): ?>
                     <a href="content/misc/print.php?order=<?= $_GET['view'] ?>" target="_blank"
                         class="btn btn-primary">Print</a>
                 <?php endif ?>

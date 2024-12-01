@@ -34,7 +34,11 @@ $queryData = mysqli_query($connection, "SELECT trans_order.*, customer.customer_
                         <td>
                             <a href="?page=add-pickup&view=<?php echo $rowData['id'] ?>">
                                 <button class="btn btn-secondary">
-                                    <i class="tf-icon bx bx-package bx-22px"></i>
+                                    <?php if ($rowData['order_status'] == 0) : ?>
+                                        <i class="tf-icon bx bx-package bx-22px"></i>
+                                    <?php elseif ($rowData['order_status'] == 1) : ?>
+                                        <i class="tf-icon bx bx-show bx-22px"></i>
+                                    <?php endif ?>
                                 </button>
                             </a>
                             <a onclick="return confirm ('Apakah anda yakin akan menghapus data ini?')"
@@ -49,5 +53,10 @@ $queryData = mysqli_query($connection, "SELECT trans_order.*, customer.customer_
                 ?>
             </tbody>
         </table>
+        <div class="mt-4" align="right">
+            <span class="me-4"><i class="bx bx-show"></i> = Detail</span>
+            <span class="me-4"><i class="bx bx-package"></i> = Pickup</span>
+            <span><i class="bx bx-trash"></i> = Delete</span>
+        </div>
     </div>
 </div>
